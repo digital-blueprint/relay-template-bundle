@@ -1,5 +1,8 @@
 # Relay Template Bundle
 
+[GitLab](https://gitlab.tugraz.at/dbp/relay/dbp-relay-template-bundle) |
+[Packagist](https://packagist.org/packages/dbp/relay-template-bundle)
+
 This Symfony bundle can be used as a template for creating new bundles for the
 DBP Relay project.
 
