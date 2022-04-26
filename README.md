@@ -61,7 +61,7 @@ DBP\API\CoreBundle\DbpCoreBundle::class => ['all' => true],
 
 ## Configuration
 
-The bundle has a `example_config` configuration value that you can specify in your
+The bundle has a `example_config` (add your config here) configuration value that you can specify in your
 app, either by hard-coding it, or by referencing an environment variable.
 
 For this create `config/packages/dbp_relay_template.yaml` in the app with the following

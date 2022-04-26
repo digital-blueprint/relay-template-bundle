@@ -13,13 +13,6 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('dbp_relay_template');
 
-        $treeBuilder->getRootNode()
-            ->children()
-                ->scalarNode('example_config')
-                    ->defaultValue('42')
-                ->end()
-            ->end();
-
         return $treeBuilder;
     }
 }
