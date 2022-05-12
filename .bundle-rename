@@ -81,7 +81,7 @@ function recursiveFileList($folder, $pattern): array
 
     foreach($files as $file) {
         if (is_file($file[0])) {
-            if (str_contains($file[0], '/vendor/') || str_contains($file[0], '/.git/') || str_contains($file[0], '/var/') || str_contains($file[0], '/.bundle_rename')) {
+            if (str_contains($file[0], '/vendor/') || str_contains($file[0], '/.git/') || str_contains($file[0], '/var/') || str_contains($file[0], '/.bundle-rename')) {
                 continue;
             }
             $fileList[] = $file[0];
@@ -138,7 +138,7 @@ if (!chdir(__DIR__)) {
 }
 
 
-$findAll = 'find . -type f -not -path \'*/\\.git/*\' -not -path \'*/vendor/*\' -not -path \'*/var/*\' -not -name \'.bundle_rename\'';
+$findAll = 'find . -type f -not -path \'*/\\.git/*\' -not -path \'*/vendor/*\' -not -path \'*/var/*\' -not -name \'.bundle-rename\'';
 
 exec($findAll.' | xargs -n 1 sed -i -e "s|dbp/relay-template-bundle|'.$composerPackageName.'|g"');
 recursiveFileTextReplace(".", 'Dbp\\Relay\\TemplateBundle', $phpNamespace);
