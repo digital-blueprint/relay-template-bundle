@@ -1,0 +1,157 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This script renames this template bundle and everything in it.
+ *
+ * Example parameters to show generated names:
+ * --unique-name=greenlight --friendly-name="Electronic Covid Access Permits" --example-entity=Permit --dry-run
+ */
+
+declare(strict_types=1);
+
+$longOpts = [
+    'vendor::',
+    'category::',
+    'unique-name:',
+    'friendly-name:',
+    'example-entity::',
+    'dry-run',
+];
+
+$options = getopt('', $longOpts);
+
+if (!isset($options['unique-name'])) {
+    echo "Please set a --unique-name!\n";
+    exit(1);
+}
+
+if (!isset($options['friendly-name'])) {
+    echo "Please set a --friendly-name!\n";
+    exit(1);
+}
+
+$vendor = $options['vendor'] ?? 'dbp';
+$category = $options['category'] ?? 'relay';
+$uniqueName = $options['unique-name'];
+$friendlyName = $options['friendly-name'];
+$exampleEntity = $options['example-entity'] ?? 'Place';
+$dryRun = isset($options['dry-run']);
+
+function plural(string $in): string
+{
+    return $in.'s';
+}
+function normalize(string $in): string
+{
+    return strtolower(str_replace(['-', '_'], ' ', $in));
+}
+function pascal(string $in): string
+{
+    return str_replace(' ', '', ucwords(normalize($in)));
+}
+function kebap(string $in): string
+{
+    return str_replace(' ', '-', normalize($in));
+}
+function snake(string $in): string
+{
+    return str_replace(' ', '_', normalize($in));
+}
+function color(string $in): string
+{
+    return "\033[32m".$in." \033[0m";
+}
+
+if (!function_exists('str_contains')) {
+    function str_contains (string $haystack, string $needle)
+    {
+        return empty($needle) || strpos($haystack, $needle) !== false;
+    }
+}
+
+/**
+ * Lists all files in a folder by a pattern recursively
+ */
+function recursiveFileList($folder, $pattern): array
+{
+    $dir = new RecursiveDirectoryIterator($folder);
+    $ite = new RecursiveIteratorIterator($dir);
+    $files = new RegexIterator($ite, $pattern, RegexIterator::GET_MATCH);
+    $fileList = array();
+
+    foreach($files as $file) {
+        if (is_file($file[0])) {
+            if (str_contains($file[0], '/vendor/') || str_contains($file[0], '/.git/') || str_contains($file[0], '/var/') || str_contains($file[0], '/.bundle_rename')) {
+                continue;
+            }
+            $fileList[] = $file[0];
+        }
+    }
+
+    return $fileList;
+}
+
+/**
+ * Replaces text in files recursively
+ */
+function recursiveFileTextReplace($folder, $pattern, $replace)
+{
+    foreach(recursiveFileList($folder, "/.+/") as $file) {
+        $content = file_get_contents($file);
+        $content = str_replace($pattern, $replace, $content);
+        file_put_contents($file, $content);
+    }
+}
+
+$directoryName = kebap($category).'-'.kebap($uniqueName).'-bundle';
+$composerPackageName = kebap($vendor).'/'.kebap($category).'-'.kebap($uniqueName).'-bundle';
+printf("%25s: %s\n", 'Composer Package Name', color($composerPackageName));
+$phpNamespace = pascal($vendor).'\\'.pascal($category).'\\'.pascal($uniqueName).'Bundle';
+printf("%25s: %s\n", 'PHP Namespace', color($phpNamespace));
+$symfonyBundleBaseName = pascal($vendor).pascal($category).pascal($uniqueName);
+$symfonyBundleName = $symfonyBundleBaseName.'Bundle';
+printf("%25s: %s\n", 'Symfony Bundle Name', color($symfonyBundleName));
+$bundleConfigKey = snake($vendor.' '.$category.' '.$uniqueName);
+printf("%25s: %s\n", 'Bundle Config Key', color($bundleConfigKey));
+$phpClassName = pascal($exampleEntity);
+$variableName = lcfirst($phpClassName);
+printf("%25s: %s\n", 'PHP Class Name', color($phpClassName));
+$apiPlatformShortName = pascal($uniqueName).pascal($exampleEntity);
+printf("%25s: %s\n", 'API-Platform Short Name', color($apiPlatformShortName));
+$resourcePath = '/'.kebap($uniqueName).'/'.kebap(plural($exampleEntity));
+printf("%25s: %s\n", 'Resource Path', color($resourcePath));
+$serializationGroup = pascal($uniqueName).pascal($exampleEntity).':some-group';
+printf("%25s: %s\n", 'Serialization Group', color($serializationGroup));
+$openAPITag = $friendlyName;
+printf("%25s: %s\n", 'Open API Tag', color($openAPITag));
+$gitRepositoryName = kebap($vendor).'-'.kebap($category).'-'.kebap($uniqueName).'-bundle';
+printf("%25s: %s\n", 'GIT Repository Name', color($gitRepositoryName));
+echo "\n";
+
+if ($dryRun) {
+    exit;
+}
+
+if (!chdir(__DIR__)) {
+    echo "Could not change to directory!\n";
+    exit -1;
+}
+
+
+$findAll = 'find . -type f -not -path \'*/\\.git/*\' -not -path \'*/vendor/*\' -not -path \'*/var/*\' -not -name \'.bundle_rename\'';
+
+exec($findAll.' | xargs -n 1 sed -i -e "s|dbp/relay-template-bundle|'.$composerPackageName.'|g"');
+recursiveFileTextReplace(".", 'Dbp\\Relay\\TemplateBundle', $phpNamespace);
+recursiveFileTextReplace(".", 'Dbp\\\\Relay\\\\TemplateBundle', str_replace('\\', '\\\\', $phpNamespace));
+exec($findAll.' | xargs -n 1 sed -i -e "s|DbpRelayTemplate|'.$symfonyBundleBaseName.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|Relay Template Bundle|'.$symfonyBundleName.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|dbp-relay-template-bundle|'.$gitRepositoryName.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|dbp_relay_template|'.$bundleConfigKey.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|/template/places|'.$resourcePath.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|TemplatePlace|'.$apiPlatformShortName.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|Place|'.$phpClassName.'|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|{\"Template\"}|{\"'.$openAPITag.'\"}|g"');
+
+rename('src/DbpRelayTemplateBundle.php', 'src/'.$symfonyBundleName.'.php');
+rename('src/DependencyInjection/DbpRelayTemplateExtension.php', 'src/DependencyInjection/'.$symfonyBundleBaseName.'Extension.php');
+rename('src/Entity/Place.php', 'src/Entity/'.$phpClassName.'.php');
