@@ -39,7 +39,7 @@ as template for your Symfony application, then this should have already been gen
 ## Configuration
 
 The bundle has a `database_url` configuration value that you can specify in your
-app, either by hardcoding it, or by referencing an environment variable.
+app, either by hard-coding it, or by referencing an environment variable.
 
 For this create `config/packages/dbp_relay_{{name}}.yaml` in the app with the following
 content:
