@@ -1,10 +1,16 @@
 Relay-API Bundle README Template
 ================================
 
+<!--
+This should act as a template README.md for a new Relay-API Bundle.
+Just remove the parts that are not relevant to your bundle and
+replace placeholders like "{{Name}}" with your bundle name and so on.
+-->
+
 # DbpRelay{{Name}}Bundle
 
-[GitLab](https://gitlab.tugraz.at/dbp/<bundle-path>) |
-[Packagist](https://packagist.org/packages/dbp/<bundle-name>) |
+[GitLab](https://gitlab.tugraz.at/dbp/{{bundle-path}}) |
+[Packagist](https://packagist.org/packages/dbp/{{bundle-name}}) |
 [Frontend Application](https://gitlab.tugraz.at/dbp/{{app-path}}) |
 [{{Name}} Website](https://dbp-demo.tugraz.at/site/software/{{name}}.html)
 
