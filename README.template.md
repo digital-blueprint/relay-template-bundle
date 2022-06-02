@@ -5,6 +5,14 @@ Relay-API Bundle README Template
 This should act as a template README.md for a new Relay-API Bundle.
 Just remove the parts that are not relevant to your bundle and
 replace placeholders like "{{Name}}" with your bundle name and so on.
+
+List of placeholders:
+- {{name}}: Name of the bundle in lowercase, like "formalize"
+- {{Name}}: Name of the bundle in camel case, like "Formalize"
+- {{NAME}}: Name of the bundle in uppercase, like "FORMALIZE"
+- {{bundle-path}}: GitLab bundle repository path, like "formalize/dbp-relay-formalize-bundle"
+- {{bundle-name}}: Name of the bundle for packagist, like "relay-formalize-bundle"
+- {{app-path}}: GitLab repository path of the frontend application, like "formalize/formalize"
 -->
 
 # DbpRelay{{Name}}Bundle
