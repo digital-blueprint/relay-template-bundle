@@ -3,8 +3,7 @@
 /**
  * This script renames this template bundle and everything in it.
  *
- * Example parameters to show generated names:
- * --unique-name=greenlight --friendly-name="Electronic Covid Access Permits" --example-entity=Permit --dry-run
+ * --unique-name=greenlight --friendly-name="Electronic Covid Access Permits" --example-entity=Permit
  */
 
 declare(strict_types=1);
@@ -15,7 +14,6 @@ $longOpts = [
     'unique-name:',
     'friendly-name:',
     'example-entity::',
-    'dry-run',
 ];
 
 $options = getopt('', $longOpts);
@@ -35,7 +33,6 @@ $category = $options['category'] ?? 'relay';
 $uniqueName = $options['unique-name'];
 $friendlyName = $options['friendly-name'];
 $exampleEntity = $options['example-entity'] ?? 'Place';
-$dryRun = isset($options['dry-run']);
 
 function plural(string $in): string
 {
@@ -103,34 +100,17 @@ function recursiveFileTextReplace($folder, $pattern, $replace)
     }
 }
 
-$directoryName = kebap($category).'-'.kebap($uniqueName).'-bundle';
 $composerPackageName = kebap($vendor).'/'.kebap($category).'-'.kebap($uniqueName).'-bundle';
-printf("%25s: %s\n", 'Composer Package Name', color($composerPackageName));
 $phpNamespace = pascal($vendor).'\\'.pascal($category).'\\'.pascal($uniqueName).'Bundle';
-printf("%25s: %s\n", 'PHP Namespace', color($phpNamespace));
 $symfonyBundleBaseName = pascal($vendor).pascal($category).pascal($uniqueName);
 $symfonyBundleName = $symfonyBundleBaseName.'Bundle';
-printf("%25s: %s\n", 'Symfony Bundle Name', color($symfonyBundleName));
 $bundleConfigKey = snake($vendor.' '.$category.' '.$uniqueName);
-printf("%25s: %s\n", 'Bundle Config Key', color($bundleConfigKey));
 $phpClassName = pascal($exampleEntity);
 $variableName = lcfirst($phpClassName);
-printf("%25s: %s\n", 'PHP Class Name', color($phpClassName));
 $apiPlatformShortName = pascal($uniqueName).pascal($exampleEntity);
-printf("%25s: %s\n", 'API-Platform Short Name', color($apiPlatformShortName));
 $resourcePath = '/'.kebap($uniqueName).'/'.kebap(plural($exampleEntity));
-printf("%25s: %s\n", 'Resource Path', color($resourcePath));
-$serializationGroup = pascal($uniqueName).pascal($exampleEntity).':some-group';
-printf("%25s: %s\n", 'Serialization Group', color($serializationGroup));
 $openAPITag = $friendlyName;
-printf("%25s: %s\n", 'Open API Tag', color($openAPITag));
 $gitRepositoryName = kebap($vendor).'-'.kebap($category).'-'.kebap($uniqueName).'-bundle';
-printf("%25s: %s\n", 'GIT Repository Name', color($gitRepositoryName));
-echo "\n";
-
-if ($dryRun) {
-    exit;
-}
 
 if (!chdir(__DIR__)) {
     echo "Could not change to directory!\n";
