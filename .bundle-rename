@@ -135,3 +135,5 @@ exec($findAll.' | xargs -n 1 sed -i -e "s|{\"Template\"}|{\"'.$openAPITag.'\"}|g
 rename('src/DbpRelayTemplateBundle.php', 'src/'.$symfonyBundleName.'.php');
 rename('src/DependencyInjection/DbpRelayTemplateExtension.php', 'src/DependencyInjection/'.$symfonyBundleBaseName.'Extension.php');
 rename('src/Entity/Place.php', 'src/Entity/'.$phpClassName.'.php');
+
+unlink(__DIR__.'.bundle-rename');
