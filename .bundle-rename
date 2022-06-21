@@ -136,4 +136,4 @@ rename('src/DbpRelayTemplateBundle.php', 'src/'.$symfonyBundleName.'.php');
 rename('src/DependencyInjection/DbpRelayTemplateExtension.php', 'src/DependencyInjection/'.$symfonyBundleBaseName.'Extension.php');
 rename('src/Entity/Place.php', 'src/Entity/'.$phpClassName.'.php');
 
-unlink(__DIR__.'.bundle-rename');
+unlink(__DIR__.'/.bundle-rename');
