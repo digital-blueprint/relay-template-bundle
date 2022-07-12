@@ -10,28 +10,28 @@ List of placeholders:
 - {{name}}: Name of the bundle in lowercase, like "formalize"
 - {{Name}}: Name of the bundle in camel case, like "Formalize"
 - {{NAME}}: Name of the bundle in uppercase, like "FORMALIZE"
-- {{bundle-path}}: GitLab bundle repository path, like "formalize/dbp-relay-formalize-bundle"
-- {{bundle-name}}: Name of the bundle for packagist, like "relay-formalize-bundle"
-- {{app-path}}: GitLab repository path of the frontend application, like "formalize/formalize"
+- {{bundle-path}}: GitLab bundle repository path, like "dbp/formalize/dbp-relay-formalize-bundle"
+- {{package-name}}: Name of the bundle for packagist, like "dbp/relay-formalize-bundle"
+- {{app-path}}: GitLab repository path of the frontend application, like "dbp/formalize/formalize"
 -->
 
 # DbpRelay{{Name}}Bundle
 
-[GitLab](https://gitlab.tugraz.at/dbp/{{bundle-path}}) |
-[Packagist](https://packagist.org/packages/dbp/{{bundle-name}}) |
-[Frontend Application](https://gitlab.tugraz.at/dbp/{{app-path}}) |
+[GitLab](https://gitlab.tugraz.at/{{bundle-path}}) |
+[Packagist](https://packagist.org/packages/{{package-name}}) |
+[Frontend Application](https://gitlab.tugraz.at/{{app-path}}) |
 [{{Name}} Website](https://dbp-demo.tugraz.at/site/software/{{name}}.html)
 
 The {{name}} bundle provides an API for interacting with ...
 
-There is a corresponding frontend application that uses this API at [{{Name}} Frontend Application](https://gitlab.tugraz.at/dbp/{{app-path}}).
+There is a corresponding frontend application that uses this API at [{{Name}} Frontend Application](https://gitlab.tugraz.at/{{app-path}}).
 
 ## Bundle installation
 
-You can install the bundle directly from [packagist.org](https://packagist.org/packages/dbp/relay-{{name}}-bundle).
+You can install the bundle directly from [packagist.org](https://packagist.org/packages/{{package-name}}).
 
 ```bash
-composer require dbp/relay-{{name}}-bundle
+composer require {{package-name}}
 ```
 
 ## Integration into the Relay API Server
@@ -81,8 +81,8 @@ For more info on bundle configuration see <https://symfony.com/doc/current/bundl
 Don't forget you need to pull down your dependencies in your main application if you are installing packages in a bundle.
 
 ```bash
-# updates and installs dependencies from dbp/relay-{{name}}-bundle
-composer update dbp/relay-{{name}}-bundle
+# updates and installs dependencies of {{package-name}}
+composer update {{package-name}}
 ```
 
 ## Scripts
