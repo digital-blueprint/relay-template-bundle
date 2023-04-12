@@ -10,21 +10,21 @@ List of placeholders:
 - {{name}}: Name of the bundle in lowercase, like "formalize"
 - {{Name}}: Name of the bundle in camel case, like "Formalize"
 - {{NAME}}: Name of the bundle in uppercase, like "FORMALIZE"
-- {{bundle-path}}: GitLab bundle repository path, like "dbp/formalize/dbp-relay-formalize-bundle"
+- {{bundle-path}}: GitLab bundle repository path, like "digital-blueprint/relay-formalize-bundle"
 - {{package-name}}: Name of the bundle for packagist, like "dbp/relay-formalize-bundle"
-- {{app-path}}: GitLab repository path of the frontend application, like "dbp/formalize/formalize"
+- {{app-path}}: GitLab repository path of the frontend application, like "digital-blueprint/formalize-app"
 -->
 
 # DbpRelay{{Name}}Bundle
 
-[GitLab](https://gitlab.tugraz.at/{{bundle-path}}) |
+[GitHub](https://github.com/{{bundle-path}}) |
 [Packagist](https://packagist.org/packages/{{package-name}}) |
-[Frontend Application](https://gitlab.tugraz.at/{{app-path}}) |
-[{{Name}} Website](https://dbp-demo.tugraz.at/site/software/{{name}}.html)
+[Frontend Application](https:/github.com/{{app-path}}) |
+[{{Name}} Website](https://mywebsite.org/site/software/{{name}}.html)
 
 The {{name}} bundle provides an API for interacting with ...
 
-There is a corresponding frontend application that uses this API at [{{Name}} Frontend Application](https://gitlab.tugraz.at/{{app-path}}).
+There is a corresponding frontend application that uses this API at [{{Name}} Frontend Application](https://github.com/{{app-path}}).
 
 ## Bundle installation
 
@@ -45,7 +45,7 @@ Dbp\Relay\CoreBundle\DbpRelayCoreBundle::class => ['all' => true],
 ];
 ```
 
-If you were using the [DBP API Server Template](https://gitlab.tugraz.at/dbp/relay/dbp-relay-server-template)
+If you were using the [DBP API Server Template](https://packagist.org/packages/dbp/relay-server-template)
 as template for your Symfony application, then this should have already been generated for you.
 
 * Run `composer install` to clear caches
@@ -64,7 +64,7 @@ dbp_relay_{{name}}:
   # database_url: %env({{NAME}}_DATABASE_URL)%
 ```
 
-If you were using the [DBP API Server Template](https://gitlab.tugraz.at/dbp/relay/dbp-relay-server-template)
+If you were using the [DBP API Server Template](https://packagist.org/packages/dbp/relay-server-template)
 as template for your Symfony application, then the configuration file should have already been generated for you.
 
 For more info on bundle configuration see <https://symfony.com/doc/current/bundles/configuration.html>.
