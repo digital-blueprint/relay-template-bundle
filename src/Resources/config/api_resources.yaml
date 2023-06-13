@@ -1,0 +1,35 @@
+resources:
+  Dbp\Relay\TemplateBundle\Entity\Place:
+    types: ['https://schema.org/Place']
+    shortName: "TemplatePlace"
+    normalizationContext:
+      groups: ["TemplatePlace:output"]
+      jsonld_embed_context: true
+    denormalizationContext:
+      groups: ["TemplatePlace:input"]
+    operations:
+      ApiPlatform\Metadata\Get:
+        provider: Dbp\Relay\TemplateBundle\State\PlaceProvider
+        uriTemplate: "/template/places/{identifier}"
+        openapiContext:
+          tags: ["Template"]
+      ApiPlatform\Metadata\GetCollection:
+        provider: Dbp\Relay\TemplateBundle\State\PlaceProvider
+        uriTemplate: "/template/places"
+        openapiContext:
+          tags: ["Template"]
+      ApiPlatform\Metadata\Post:
+        processor: Dbp\Relay\TemplateBundle\State\PlaceProcessor
+        uriTemplate: "/template/places"
+        openapiContext:
+          tags: ["Template"]
+      ApiPlatform\Metadata\Delete:
+        processor: Dbp\Relay\TemplateBundle\State\PlaceProcessor
+        uriTemplate: "/template/places/{identifier}"
+        openapiContext:
+          tags: ["Template"]
+    properties:
+      identifier:
+        identifier: true
+      name:
+        iri: 'https://schema.org/name'
