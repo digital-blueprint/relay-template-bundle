@@ -7,5 +7,5 @@
 
 This Symfony bundle is used as a template for creating a new relay bundle and
 should normally not be used directly. See [Generate DBP Symfony
-bundle](https://handbook.digital-blueprint.org/relay/dev/new_bundle) for more
+bundle](https://handbook.digital-blueprint.org/frameworks/relay/dev/new_bundle/) for more
 information.
