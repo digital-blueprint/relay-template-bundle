@@ -4,7 +4,6 @@ resources:
     shortName: "TemplatePlace"
     normalizationContext:
       groups: ["TemplatePlace:output"]
-      jsonld_embed_context: true
     denormalizationContext:
       groups: ["TemplatePlace:input"]
     operations:
