@@ -139,5 +139,6 @@ rename('src/Entity/Place.php', 'src/Entity/'.$phpClassName.'.php');
 unlink('README.md');
 rename('README.template.md', 'README.md');
 
+unlink(__DIR__.'/CHANGELOG.md');
 unlink(__DIR__.'/.bundle-rename');
 unlink(__DIR__.'/.github/workflows/rename.yml');
