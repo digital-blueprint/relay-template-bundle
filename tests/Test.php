@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Dbp\Relay\TemplateBundle\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class Test extends TestCase
+class Test extends KernelTestCase
 {
-    public function testExample()
+    public function testContainer()
     {
-        $this->assertTrue(true);
+        self::bootKernel();
+        $container = static::getContainer();
+        $this->assertNotNull($container);
     }
 }
