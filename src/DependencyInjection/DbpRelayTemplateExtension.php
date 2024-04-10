@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Dbp\Relay\TemplateBundle\DependencyInjection;
 
 use Dbp\Relay\CoreBundle\Extension\ExtensionTrait;
+use Dbp\Relay\TemplateBundle\Service\PlaceService;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -21,5 +22,8 @@ class DbpRelayTemplateExtension extends ConfigurableExtension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yaml');
+
+        $definition = $container->getDefinition(PlaceService::class);
+        $definition->addMethodCall('setConfig', [$mergedConfig]);
     }
 }

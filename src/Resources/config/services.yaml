@@ -1,1 +1,10 @@
 services:
+  Dbp\Relay\TemplateBundle\Rest\:
+    resource: '../../Rest'
+    autowire: true
+    autoconfigure: true
+
+  Dbp\Relay\TemplateBundle\Service\:
+    resource: '../../Service'
+    autowire: true
+    autoconfigure: true

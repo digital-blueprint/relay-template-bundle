@@ -8,22 +8,35 @@ resources:
       groups: ["TemplatePlace:input"]
     operations:
       ApiPlatform\Metadata\Get:
-        provider: Dbp\Relay\TemplateBundle\State\PlaceProvider
+        provider: Dbp\Relay\TemplateBundle\Rest\PlaceProvider
         uriTemplate: "/template/places/{identifier}"
         openapiContext:
           tags: ["Template"]
       ApiPlatform\Metadata\GetCollection:
-        provider: Dbp\Relay\TemplateBundle\State\PlaceProvider
+        provider: Dbp\Relay\TemplateBundle\Rest\PlaceProvider
         uriTemplate: "/template/places"
         openapiContext:
           tags: ["Template"]
       ApiPlatform\Metadata\Post:
-        processor: Dbp\Relay\TemplateBundle\State\PlaceProcessor
+        processor: Dbp\Relay\TemplateBundle\Rest\PlaceProcessor
         uriTemplate: "/template/places"
         openapiContext:
           tags: ["Template"]
+          requestBody:
+            content:
+              application/ld+json:
+                schema:
+                  type: "object"
+                  properties:
+                    name:
+                      type: "string"
+                  required:
+                    - name
+                example:
+                  name: "Example Name"
       ApiPlatform\Metadata\Delete:
-        processor: Dbp\Relay\TemplateBundle\State\PlaceProcessor
+        processor: Dbp\Relay\TemplateBundle\Rest\PlaceProcessor
+        provider: Dbp\Relay\TemplateBundle\Rest\PlaceProvider
         uriTemplate: "/template/places/{identifier}"
         openapiContext:
           tags: ["Template"]

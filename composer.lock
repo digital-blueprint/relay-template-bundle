@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2d3c82f856b3be4b3ad60f7c2197285",
+    "content-hash": "9ae98d07ae8518a0fcfd973193425f1b",
     "packages": [
         {
             "name": "api-platform/core",
@@ -171,16 +171,16 @@
         },
         {
             "name": "dbp/relay-core-bundle",
-            "version": "v0.1.150",
+            "version": "v0.1.152",
             "source": {
                 "type": "git",
                 "url": "https://github.com/digital-blueprint/relay-core-bundle.git",
-                "reference": "4c3b7968491893b8554b381f26e425e6fca6591d"
+                "reference": "0deb725c6e5f934f858751547a236c6d740b2fb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/digital-blueprint/relay-core-bundle/zipball/4c3b7968491893b8554b381f26e425e6fca6591d",
-                "reference": "4c3b7968491893b8554b381f26e425e6fca6591d",
+                "url": "https://api.github.com/repos/digital-blueprint/relay-core-bundle/zipball/0deb725c6e5f934f858751547a236c6d740b2fb0",
+                "reference": "0deb725c6e5f934f858751547a236c6d740b2fb0",
                 "shasum": ""
             },
             "require": {
@@ -229,6 +229,8 @@
             },
             "conflict": {
                 "api-platform/core": "2.7.17",
+                "carbonphp/carbon-doctrine-types": ">=3",
+                "doctrine/dbal": ">=4",
                 "symfony/amqp-messenger": ">=6.0 <6.4",
                 "symfony/property-info": ">=6.0 <6.4",
                 "symfony/twig-bridge": ">=6.0 <6.4",
@@ -261,9 +263,9 @@
             "description": "The core bundle of the Relay API gateway",
             "support": {
                 "issues": "https://github.com/digital-blueprint/relay-core-bundle/issues",
-                "source": "https://github.com/digital-blueprint/relay-core-bundle/tree/v0.1.150"
+                "source": "https://github.com/digital-blueprint/relay-core-bundle/tree/v0.1.152"
             },
-            "time": "2024-03-28T12:00:03+00:00"
+            "time": "2024-04-09T09:31:44+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -9868,5 +9870,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.2.0"
 }

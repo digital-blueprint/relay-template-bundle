@@ -13,6 +13,8 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('dbp_relay_template');
 
+        // append your config definition here
+
         return $treeBuilder;
     }
 }
