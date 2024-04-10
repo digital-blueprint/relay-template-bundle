@@ -135,6 +135,9 @@ exec($findAll.' | xargs -n 1 sed -i -e "s|{\"Template\"}|{\"'.$openAPITag.'\"}|g
 rename('src/DbpRelayTemplateBundle.php', 'src/'.$symfonyBundleName.'.php');
 rename('src/DependencyInjection/DbpRelayTemplateExtension.php', 'src/DependencyInjection/'.$symfonyBundleBaseName.'Extension.php');
 rename('src/Entity/Place.php', 'src/Entity/'.$phpClassName.'.php');
+rename('src/Rest/PlaceProcessor.php', 'src/Rest/'.$phpClassName.'Processor.php');
+rename('src/Rest/PlaceProvider.php', 'src/Rest/'.$phpClassName.'Provider.php');
+rename('src/Service/PlaceService.php', 'src/Service/'.$phpClassName.'Service.php');
 
 unlink('README.md');
 rename('README.template.md', 'README.md');
