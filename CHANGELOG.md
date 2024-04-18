@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.10
+
+* Add support for api-platform 3.2
+* Add some providers/processors/services for the example resource
+
 ## v0.1.9
 
 * Add support for Symfony 6
