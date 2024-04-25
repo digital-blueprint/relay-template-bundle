@@ -23,6 +23,8 @@ class DbpRelayTemplateExtension extends ConfigurableExtension
         );
         $loader->load('services.yaml');
 
+        $this->addResourceClassDirectory($container, __DIR__.'/../Entity');
+
         $definition = $container->getDefinition(PlaceService::class);
         $definition->addMethodCall('setConfig', [$mergedConfig]);
     }

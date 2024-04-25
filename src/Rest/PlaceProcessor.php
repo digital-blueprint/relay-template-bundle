@@ -21,6 +21,8 @@ class PlaceProcessor extends AbstractDataProcessor
     {
         assert($data instanceof Place);
 
+        $data->setIdentifier('42');
+
         return $this->placeService->addPlace($data);
     }
 
