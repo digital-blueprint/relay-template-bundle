@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.12
+
+* Drop support for Symfony 5
+* Drop support for api-platform 2.x
+
 ## v0.1.11
 
 * Port to PHPUnit 10
