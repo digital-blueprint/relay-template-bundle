@@ -17,7 +17,7 @@ class PlaceProcessor extends AbstractDataProcessor
         $this->placeService = $placeService;
     }
 
-    protected function addItem($data, array $filters)
+    protected function addItem(mixed $data, array $filters): mixed
     {
         assert($data instanceof Place);
 
