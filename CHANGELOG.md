@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.13
+
+* Fix compatibility with newer core bundle
+
 ## v0.1.12
 
 * Drop support for Symfony 5
