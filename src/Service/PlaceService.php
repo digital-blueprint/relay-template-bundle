@@ -30,7 +30,7 @@ class PlaceService
         return $data;
     }
 
-    public function removePlace(Place $data)
+    public function removePlace(Place $data): void
     {
     }
 }

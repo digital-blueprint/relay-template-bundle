@@ -17,7 +17,7 @@ class PlaceProcessor extends AbstractDataProcessor
         $this->placeService = $placeService;
     }
 
-    protected function addItem(mixed $data, array $filters): mixed
+    protected function addItem(mixed $data, array $filters): Place
     {
         assert($data instanceof Place);
 
@@ -31,10 +31,5 @@ class PlaceProcessor extends AbstractDataProcessor
         assert($data instanceof Place);
 
         $this->placeService->removePlace($data);
-    }
-
-    protected function isUserGrantedOperationAccess(int $operation): bool
-    {
-        return $this->isAuthenticated();
     }
 }

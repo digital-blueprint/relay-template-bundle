@@ -20,18 +20,16 @@ class PlaceProvider extends AbstractDataProvider
         $this->placeService = $placeService;
     }
 
-    protected function getItemById(string $id, array $filters = [], array $options = []): ?object
+    protected function getItemById(string $id, array $filters = [], array $options = []): ?Place
     {
         return $this->placeService->getPlace($id, $filters, $options);
     }
 
+    /**
+     * @return Place[]
+     */
     protected function getPage(int $currentPageNumber, int $maxNumItemsPerPage, array $filters = [], array $options = []): array
     {
         return $this->placeService->getPlaces($currentPageNumber, $maxNumItemsPerPage, $filters, $options);
-    }
-
-    protected function isUserGrantedOperationAccess(int $operation): bool
-    {
-        return $this->isAuthenticated();
     }
 }
