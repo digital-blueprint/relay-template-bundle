@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.14
+
+* Fix compatibility with newer core bundle
+* Also rename the service in the REST controllers
+
 ## v0.1.13
 
 * Fix compatibility with newer core bundle
