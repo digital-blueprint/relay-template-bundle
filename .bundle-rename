@@ -131,7 +131,7 @@ exec($findAll.' | xargs -n 1 sed -i -e "s|/template/places|'.$resourcePath.'|g"'
 exec($findAll.' | xargs -n 1 sed -i -e "s|TemplatePlace|'.$apiPlatformShortName.'|g"');
 exec($findAll.' | xargs -n 1 sed -i -e "s|Place|'.$phpClassName.'|g"');
 exec($findAll.' | xargs -n 1 sed -i -e "s|{\"Template\"}|{\"'.$openAPITag.'\"}|g"');
-exec($findAll.' | xargs -n 1 sed -i -e "s|placeService|'.strtolower($phpClassName).'Service|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|placeService|'.lcfirst($phpClassName).'Service|g"');
 
 rename('src/DbpRelayTemplateBundle.php', 'src/'.$symfonyBundleName.'.php');
 rename('src/DependencyInjection/DbpRelayTemplateExtension.php', 'src/DependencyInjection/'.$symfonyBundleBaseName.'Extension.php');
