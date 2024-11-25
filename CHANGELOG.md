@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.16
+
+* PHP 8.4 support
+* Drop default psalm integration. php-stan is still supported
+
 ## v0.1.15
 
 * Fix compatibility with newer core bundle
