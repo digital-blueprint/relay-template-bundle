@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.17
+
+* Drop support for PHP 8.1
+* Drop support for api-platform 3.2/3.3
+
 ## v0.1.16
 
 * PHP 8.4 support
