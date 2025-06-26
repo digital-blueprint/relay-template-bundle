@@ -10,6 +10,8 @@ use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\OpenApi\Model\Operation;
+use ApiPlatform\OpenApi\Model\RequestBody;
 use Dbp\Relay\TemplateBundle\Rest\PlaceProcessor;
 use Dbp\Relay\TemplateBundle\Rest\PlaceProvider;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -20,24 +22,24 @@ use Symfony\Component\Serializer\Annotation\Groups;
     operations: [
         new Get(
             uriTemplate: '/template/places/{identifier}',
-            openapiContext: [
-                'tags' => ['Template'],
-            ],
+            openapi: new Operation(
+                tags: ['Template'],
+            ),
             provider: PlaceProvider::class
         ),
         new GetCollection(
             uriTemplate: '/template/places',
-            openapiContext: [
-                'tags' => ['Template'],
-            ],
+            openapi: new Operation(
+                tags: ['Template'],
+            ),
             provider: PlaceProvider::class
         ),
         new Post(
             uriTemplate: '/template/places',
-            openapiContext: [
-                'tags' => ['Template'],
-                'requestBody' => [
-                    'content' => [
+            openapi: new Operation(
+                tags: ['Template'],
+                requestBody: new RequestBody(
+                    content: new \ArrayObject([
                         'application/ld+json' => [
                             'schema' => [
                                 'type' => 'object',
@@ -50,16 +52,16 @@ use Symfony\Component\Serializer\Annotation\Groups;
                                 'name' => 'Example Name',
                             ],
                         ],
-                    ],
-                ],
-            ],
+                    ])
+                )
+            ),
             processor: PlaceProcessor::class
         ),
         new Delete(
             uriTemplate: '/template/places/{identifier}',
-            openapiContext: [
-                'tags' => ['Template'],
-            ],
+            openapi: new Operation(
+                tags: ['Template'],
+            ),
             provider: PlaceProvider::class,
             processor: PlaceProcessor::class
         ),
