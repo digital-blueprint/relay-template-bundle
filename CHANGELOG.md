@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.18
+
+* Add support for api-platform 4.1
+* Update to phpstan 2
+* Update to phpunit 11
+
 ## v0.1.17
 
 * Drop support for PHP 8.1
