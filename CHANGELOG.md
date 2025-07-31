@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.19
+
+* Minor fixes
+
 ## v0.1.18
 
 * Add support for api-platform 4.1
