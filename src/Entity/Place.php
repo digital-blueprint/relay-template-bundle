@@ -23,21 +23,21 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Get(
             uriTemplate: '/template/places/{identifier}',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['TagTemplate'],
             ),
             provider: PlaceProvider::class
         ),
         new GetCollection(
             uriTemplate: '/template/places',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['TagTemplate'],
             ),
             provider: PlaceProvider::class
         ),
         new Post(
             uriTemplate: '/template/places',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['TagTemplate'],
                 requestBody: new RequestBody(
                     content: new \ArrayObject([
                         'application/ld+json' => [
@@ -60,7 +60,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Delete(
             uriTemplate: '/template/places/{identifier}',
             openapi: new Operation(
-                tags: ['Template'],
+                tags: ['TagTemplate'],
             ),
             provider: PlaceProvider::class,
             processor: PlaceProcessor::class

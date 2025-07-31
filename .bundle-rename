@@ -130,7 +130,7 @@ exec($findAll.' | xargs -n 1 sed -i -e "s|dbp_relay_template|'.$bundleConfigKey.
 exec($findAll.' | xargs -n 1 sed -i -e "s|/template/places|'.$resourcePath.'|g"');
 exec($findAll.' | xargs -n 1 sed -i -e "s|TemplatePlace|'.$apiPlatformShortName.'|g"');
 exec($findAll.' | xargs -n 1 sed -i -e "s|Place|'.$phpClassName.'|g"');
-exec($findAll.' | xargs -n 1 sed -i -e "s|{\"Template\"}|{\"'.$openAPITag.'\"}|g"');
+exec($findAll.' | xargs -n 1 sed -i -e "s|TagTemplate|'.$openAPITag.'|g"');
 exec($findAll.' | xargs -n 1 sed -i -e "s|placeService|'.lcfirst($phpClassName).'Service|g"');
 
 rename('src/DbpRelayTemplateBundle.php', 'src/'.$symfonyBundleName.'.php');
