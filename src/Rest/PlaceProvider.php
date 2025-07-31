@@ -17,6 +17,7 @@ class PlaceProvider extends AbstractDataProvider
 
     public function __construct(PlaceService $placeService)
     {
+        parent::__construct();
         $this->placeService = $placeService;
     }
 

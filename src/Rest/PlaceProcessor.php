@@ -14,6 +14,7 @@ class PlaceProcessor extends AbstractDataProcessor
 
     public function __construct(PlaceService $placeService)
     {
+        parent::__construct();
         $this->placeService = $placeService;
     }
 
