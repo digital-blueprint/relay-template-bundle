@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.20
+
+* Minor fixes
+
 ## v0.1.19
 
 * Minor fixes
