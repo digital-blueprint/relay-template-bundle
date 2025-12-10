@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.21
+
+* Add support for Symfony 7.4
+* Add support for PHP 8.5
+* Move to split api-platform packages
+
 ## v0.1.20
 
 * Minor fixes
