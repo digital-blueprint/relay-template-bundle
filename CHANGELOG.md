@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.22
+
+* Drop support for Symfony 6.4
+* Drop support for api-platform 4.1
+
 ## v0.1.21
 
 * Add support for Symfony 7.4
