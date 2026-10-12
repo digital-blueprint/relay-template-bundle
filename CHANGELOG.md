@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.23
+
+* Add support for api-platform 5
+
 ## v0.1.22
 
 * Drop support for Symfony 6.4
